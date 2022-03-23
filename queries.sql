@@ -15,9 +15,11 @@ SELECT * from animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
 BEGIN;
   UPDATE animals SET species = 'unspecified';
 
-  select * from animals;
+  SELECT * FROM animals;
 
 ROLLBACK TRANSACTION;
+
+SELECT species FROM animals;
 
 /* end transaction query for species column */
 
@@ -35,6 +37,8 @@ BEGIN;
 
 COMMIT WORK;
 
+SELECT species FROM animals;
+
 /* END transaction */
 
 /* Start transaction to delete all records in the animals table */
@@ -43,6 +47,7 @@ BEGIN;
     DELETE FROM animals;
 ROLLBACK;
 
+SELECT species FROM animals;
 /* End transaction with rollback */
 
 /* Start transaction for multiple operations */
